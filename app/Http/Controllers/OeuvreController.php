@@ -1,24 +1,32 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Oeuvre;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\Response;
 
-class OeuvreController
+class OeuvreController extends Controller
 {
-    public function index(Request $request): View {
-        $categorie = $request->query('categorie');
+    private const SEARCH_COOKIE_MINUTES = 60;
+    public function index(Request $request): Response
+    {
+        $search = $request->has('search')
+            ? ($request->query('search') ?: null)
+            : $request->cookie('search');
 
-        $taches = Tache::query()
-            ->ofCategorie($categorie)
-            ->latest('expiration')
+        $oeuvres = Oeuvre::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('titre', 'like', '%' . $search . '%');
+            })
             ->get();
 
-        $categories = Tache::query()->distinct()->orderBy('categorie')->pluck('categorie');
-
-        return view('taches.index', [
-            'taches' => $taches,
-            'categories' => $categories,
-            'categorieSelectionnee' => $categorie,
-        ]);
+        return response()
+            ->view('oeuvres.index', [
+                'oeuvres' => $oeuvres,
+                'search' => $search,
+            ])
+            ->cookie('search', (string) $search, self::SEARCH_COOKIE_MINUTES);
     }
 
 }

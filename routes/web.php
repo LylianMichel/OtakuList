@@ -7,4 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/oeuvre', [OeuvreController::class,'index']);
+Route::get('/oeuvres', [OeuvreController::class,'index'])
+    ->name('oeuvres.index');

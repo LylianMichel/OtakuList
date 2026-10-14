@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@props(['oeuvres'])
 
-    <title>Grille Des Cartes</title>
-</head>
-<body>
-    <h1>Liste des anime</h1>
-</body>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    @foreach ($oeuvres as $oeuvre)
+        <x-oeuvre-card :oeuvre="$oeuvre" />
+    @endforeach
+</div>

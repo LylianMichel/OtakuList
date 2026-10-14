@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@props(['oeuvre'])
 
-    <title>Carte des anime</title>
-</head>
-<body>
-    <h1>Anime Nom (temp)</h1>
+<div class="border rounded-lg p-4">
+    <h2>{{ $oeuvre->titre }}</h2>
 
-</body>
+    <p>Type : {{ $oeuvre->type }}</p>
+    <p>Année : {{ $oeuvre->annee }}</p>
+    <p>Statut : {{ $oeuvre->status }}</p>
+</div>
+
