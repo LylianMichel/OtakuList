@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "C:\\Users\\lylia\\AppData\\Local\\Programs\\PHP\\8.5.10\\php.exe",
+            "args": [
+                "C:\\Users\\lylia\\Desktop\\COURS\\otakuList\\artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
