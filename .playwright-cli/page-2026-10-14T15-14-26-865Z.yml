@@ -1,0 +1,190 @@
+- generic [ref=e2]:
+  - link "Aller au contenu" [ref=e3] [cursor=pointer]:
+    - /url: "#main"
+  - banner "Bandeau OtakuList" [ref=e4]
+  - navigation "Navigation principale" [ref=e6]:
+    - link "OtakuList — retour à l'accueil" [ref=e7] [cursor=pointer]:
+      - /url: http://127.0.0.1:8000
+      - text: OtakuList
+      - generic [ref=e8]: LE MANGA AUTREMENT
+    - text: ⌕
+    - group [ref=e168]:
+      - generic "☰ Menu" [ref=e169] [cursor=pointer]
+  - main [ref=e19]:
+    - region [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: ✿ CHAPITRE 01 — ENTRE DANS L'HISTOIRE
+          - heading [level=1] [ref=e24]:
+            - text: Chaque page,un nouvel
+            - emphasis [ref=e27]: univers.
+          - paragraph [ref=e28]: Animés à regarder, mangas à feuilleter. Explore les histoires, découvre leurs synopsis et trouve ton prochain univers.
+          - generic [ref=e29]:
+            - link "Explorer la collection" [ref=e30] [cursor=pointer]:
+              - /url: "#bibliotheque"
+              - text: Explorer la collection
+              - generic [aria-hidden] [ref=e31]: ↗
+            - link "Notre histoire" [ref=e32] [cursor=pointer]:
+              - /url: http://127.0.0.1:8000/a-propos
+              - text: Notre histoire
+              - generic [aria-hidden] [ref=e33]: →
+          - generic [ref=e34]: LECTURE · DÉCOUVERTES · ÉMOTIONS ✿
+          - text: ✿
+        - generic "Illustrations de style manga japonais" [ref=e35]:
+          - generic [ref=e36]:
+            - img "Ruelle et montagnes japonaises au printemps, cerisiers en fleurs" [ref=e37]
+            - generic [ref=e38]: 桜の季節、新しい物語
+          - generic [ref=e39]:
+            - generic [ref=e40]: 物語の始まり
+            - text: ✿
+          - generic [ref=e41]:
+            - generic [aria-hidden] [ref=e42]: ✿
+            - generic [ref=e43]: À toi d'écrirela suite !
+    - generic [aria-hidden] [ref=e45]:
+      - generic [ref=e46]: ✿À FEUILLETER
+      - generic [ref=e47]: ✿À DÉCOUVRIR
+      - generic [ref=e48]: ✿À AIMER
+      - generic [ref=e49]: ✿À FEUILLETER
+    - region [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]: LE CATALOGUE OTAKULIST
+          - heading [level=2] [ref=e54]:
+            - text: Ta prochaine
+            - emphasis [ref=e55]: histoire.
+        - generic [ref=e56]: 3 œuvres à découvrir
+      - search "Rechercher dans le catalogue" [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Rechercher une œuvre
+          - searchbox "Rechercher une œuvre" [ref=e60]
+        - generic [ref=e61]:
+          - generic [ref=e62]: Format
+          - combobox "Format" [ref=e63]:
+            - option "Tous les formats" [selected]
+            - text: Animés
+            - option "Mangas"
+        - generic [ref=e64]:
+          - generic [ref=e65]: Statut
+          - combobox "Statut" [ref=e66]:
+            - option "Tous les statuts" [selected]
+            - option "En cours"
+            - option "Terminé"
+            - option "À venir"
+        - button "Rechercher ↗" [ref=e67]
+        - link "Réinitialiser" [ref=e68] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000#bibliotheque
+      - generic [ref=e69]:
+        - generic [ref=e70]: À REGARDER · À FEUILLETER · À DÉCOUVRIR
+        - generic [ref=e71]: Les mieux notées en premier
+      - generic [ref=e72]:
+        - article [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]: OTAKULIST / 2023
+              - generic [aria-hidden] [ref=e77]: ✿
+              - strong [ref=e78]: Frieren
+              - generic [ref=e79]: À regarder
+            - generic [ref=e80]: Anime
+            - 'generic "Note : 4.8 sur 5" [ref=e81]': ★ 4,8 / 5
+          - generic [ref=e82]:
+            - heading "Frieren" [level=3] [ref=e83]
+            - generic [ref=e84]: "2023"
+          - generic [ref=e85]:
+            - generic [ref=e86]: En cours
+            - generic [ref=e87]: 28 épisodes
+          - paragraph [ref=e88]: Madhouse
+          - group [ref=e89]:
+            - generic "Lire le synopsis" [ref=e90] [cursor=pointer]:
+              - text: Lire le synopsis
+              - generic [aria-hidden] [ref=e91]: ＋
+        - article [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e95]: OTAKULIST / 2006
+              - generic [aria-hidden] [ref=e96]: ✿
+              - strong [ref=e97]: Death Note
+              - generic [ref=e98]: À regarder
+            - generic [ref=e99]: Anime
+            - 'generic "Note : 4.7 sur 5" [ref=e100]': ★ 4,7 / 5
+          - generic [ref=e101]:
+            - heading "Death Note" [level=3] [ref=e102]
+            - generic [ref=e103]: "2006"
+          - generic [ref=e104]:
+            - generic [ref=e105]: Terminé
+            - generic [ref=e106]: 37 épisodes
+          - paragraph [ref=e107]: Madhouse
+          - group [ref=e108]:
+            - generic "Lire le synopsis" [ref=e109] [cursor=pointer]:
+              - text: Lire le synopsis
+              - generic [aria-hidden] [ref=e110]: ＋
+        - article [ref=e111]:
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - generic [ref=e114]: OTAKULIST / 2002
+              - generic [aria-hidden] [ref=e115]: ✿
+              - strong [ref=e116]: Naruto
+              - generic [ref=e117]: À regarder
+            - generic [ref=e118]: Anime
+            - 'generic "Note : 4.5 sur 5" [ref=e119]': ★ 4,5 / 5
+          - generic [ref=e120]:
+            - heading "Naruto" [level=3] [ref=e121]
+            - generic [ref=e122]: "2002"
+          - generic [ref=e123]:
+            - generic [ref=e124]: Terminé
+            - generic [ref=e125]: 220 épisodes
+          - paragraph [ref=e126]: Studio Pierrot
+          - group [ref=e127]:
+            - generic "Lire le synopsis" [ref=e128] [cursor=pointer]:
+              - text: Lire le synopsis
+              - generic [aria-hidden] [ref=e129]: ＋
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - text: 桜
+          - generic [ref=e132]: ✿ LE CHAPITRE DE LA SEMAINE
+          - heading "Brise d'après." [level=3] [ref=e133]: Brised'après.
+          - paragraph [ref=e134]: Les histoires continuent...
+        - article [ref=e135]:
+          - generic [ref=e136]: LE RENDEZ-VOUS OTAKU · ÉDITION 01
+          - heading "Une histoire peut tout changer." [level=3] [ref=e137]
+          - paragraph [ref=e138]: Un titre, un studio, un univers à explorer. Prends le temps de lire les synopsis et laisse-toi surprendre par ta prochaine découverte.
+          - link "Découvrir le projet" [ref=e139] [cursor=pointer]:
+            - /url: http://127.0.0.1:8000/a-propos
+            - text: Découvrir le projet
+            - generic [aria-hidden] [ref=e140]: →
+    - region [ref=e141]:
+      - generic [ref=e142]:
+        - generic [ref=e143]:
+          - generic [ref=e144]: TROUVE TA PROCHAINE HISTOIRE
+          - heading [level=2] [ref=e145]:
+            - text: Ton humeur,
+            - emphasis [ref=e146]: ton manga.
+        - generic [ref=e147]: TROIS UNIVERS À DÉCOUVRIR
+      - generic [ref=e148]:
+        - link "01 / À REGARDER Animés ↗ Des univers qui prennent vie à l'écran. ✿" [ref=e149] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000?type=anime#bibliotheque
+          - generic [ref=e150]: 01 / À REGARDER
+          - heading "Animés ↗" [level=3] [ref=e151]
+          - paragraph [ref=e152]: Des univers qui prennent vie à l'écran.
+          - text: ✿
+        - link "02 / À FEUILLETER Mangas ↗ Des histoires à découvrir page après page. 森" [ref=e153] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000?type=manga#bibliotheque
+          - generic [ref=e154]: 02 / À FEUILLETER
+          - heading "Mangas ↗" [level=3] [ref=e155]
+          - paragraph [ref=e156]: Des histoires à découvrir page après page.
+          - text: 森
+        - link "03 / JUSQU'AU BOUT Terminés ↗ Pour découvrir une histoire complète. ✦" [ref=e157] [cursor=pointer]:
+          - /url: http://127.0.0.1:8000?status=termine#bibliotheque
+          - generic [ref=e158]: 03 / JUSQU'AU BOUT
+          - heading "Terminés ↗" [level=3] [ref=e159]
+          - paragraph [ref=e160]: Pour découvrir une histoire complète.
+          - text: ✦
+  - complementary "Devise de OtakuList" [ref=e161]: ✿ CHAQUE PAGE, UN NOUVEL UNIVERS ✿
+  - contentinfo [ref=e162]:
+    - link "OtakuList" [ref=e163] [cursor=pointer]:
+      - /url: http://127.0.0.1:8000
+    - generic [ref=e164]: © 2026 · OtakuList · Animés & mangas
+    - generic [ref=e165]:
+      - link "À propos" [ref=e166] [cursor=pointer]:
+        - /url: http://127.0.0.1:8000/a-propos
+      - link "Contact" [ref=e167] [cursor=pointer]:
+        - /url: http://127.0.0.1:8000/contact
