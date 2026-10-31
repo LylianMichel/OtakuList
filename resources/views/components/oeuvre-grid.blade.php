@@ -1,7 +1,14 @@
 @props(['oeuvres'])
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    @foreach ($oeuvres as $oeuvre)
+<div {{ $attributes->merge(['class' => 'feature-grid']) }}>
+    @forelse ($oeuvres as $oeuvre)
         <x-oeuvre-card :oeuvre="$oeuvre" />
-    @endforeach
+    @empty
+        <div class="catalogue-empty">
+            <span aria-hidden="true">✿</span>
+            <h3>Aucune œuvre trouvée</h3>
+            <p>Essaie un autre titre ou réinitialise les filtres pour explorer toute la collection.</p>
+            <a class="button cream" href="{{ route('oeuvres.index', ['search' => '']) }}">Réinitialiser les filtres →</a>
+        </div>
+    @endforelse
 </div>
