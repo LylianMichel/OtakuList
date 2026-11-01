@@ -13,25 +13,12 @@ class OeuvreController extends Controller
 
     public function index(Request $request): Response
     {
-        $filters = $request->validate([
-            'search' => ['nullable', 'string', 'max:120'],
-            'type' => ['nullable', 'in:anime,manga'],
-            'status' => ['nullable', 'in:en_cours,termine,a_venir'],
-        ]);
-
-        $search = trim((string) ($request->has('search')
-            ? ($filters['search'] ?? '')
-            : $request->cookie('search', '')));
-        $filters['search'] = $search;
-
-        $oeuvres = Oeuvre::query()
-            ->when($search !== '', fn (Builder $query): Builder => $query->where('titre', 'like', '%'.$search.'%'))
-            ->when($filters['type'] ?? null, fn (Builder $query, string $type): Builder => $query->where('type', $type))
-            ->when($filters['status'] ?? null, fn (Builder $query, string $status): Builder => $query->where('status', $status))
+        $filters = $this->filtersFromRequest($request);
+        $oeuvres = $this->filteredQuery($filters)
             ->orderByDesc('note')
             ->orderBy('id')
             ->paginate(12)
-            ->appends(array_filter($filters, fn (?string $value): bool => $value !== null && $value !== ''))
+            ->appends($this->paginationFilters($filters))
             ->fragment('bibliotheque');
 
         return response()
@@ -39,6 +26,70 @@ class OeuvreController extends Controller
                 'oeuvres' => $oeuvres,
                 'filters' => $filters,
             ])
-            ->cookie('search', $search, self::SEARCH_COOKIE_MINUTES);
+            ->cookie('search', $filters['search'], self::SEARCH_COOKIE_MINUTES);
+    }
+
+    /**
+     * @return array{search: string, type?: string|null, status?: string|null}
+     */
+    private function filtersFromRequest(Request $request): array
+    {
+        $filters = $request->validate([
+            'search' => ['nullable', 'string', 'max:120'],
+            'type' => ['nullable', 'in:anime,manga'],
+            'status' => ['nullable', 'in:en_cours,termine,a_venir'],
+        ]);
+
+        if ($request->has('search')) {
+            $search = $filters['search'] ?? '';
+        } else {
+            $search = $request->cookie('search', '');
+        }
+
+        $filters['search'] = trim((string) $search);
+
+        return $filters;
+    }
+
+    /**
+     * @param  array{search: string, type?: string|null, status?: string|null}  $filters
+     * @return Builder<Oeuvre>
+     */
+    private function filteredQuery(array $filters): Builder
+    {
+        $query = Oeuvre::query();
+
+        if ($filters['search'] !== '') {
+            $query->where('titre', 'like', '%'.$filters['search'].'%');
+        }
+
+        if (! empty($filters['type'])) {
+            $query->where('type', $filters['type']);
+        }
+
+        if (! empty($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param  array{search: string, type?: string|null, status?: string|null}  $filters
+     * @return array<string, string>
+     */
+    private function paginationFilters(array $filters): array
+    {
+        $paginationFilters = [];
+
+        foreach ($filters as $name => $value) {
+            if ($value === null || $value === '') {
+                continue;
+            }
+
+            $paginationFilters[$name] = $value;
+        }
+
+        return $paginationFilters;
     }
 }
