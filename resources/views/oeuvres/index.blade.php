@@ -7,7 +7,7 @@
     <div class="search-field"><label for="catalogue-search">Rechercher une œuvre</label><input id="catalogue-search" type="search" name="search" maxlength="120" value="{{ $filters['search'] ?? '' }}" placeholder="Naruto, Frieren…"></div>
     <div><label for="catalogue-type">Format</label><select id="catalogue-type" name="type"><option value="">Tous les formats</option><option value="anime" @selected(($filters['type'] ?? '') === 'anime')>Animés</option><option value="manga" @selected(($filters['type'] ?? '') === 'manga')>Mangas</option></select></div>
     <div><label for="catalogue-status">Statut</label><select id="catalogue-status" name="status"><option value="">Tous les statuts</option><option value="en_cours" @selected(($filters['status'] ?? '') === 'en_cours')>En cours</option><option value="termine" @selected(($filters['status'] ?? '') === 'termine')>Terminé</option><option value="a_venir" @selected(($filters['status'] ?? '') === 'a_venir')>À venir</option></select></div>
-    <button class="button rose" type="submit">Rechercher ↗</button>
+    <button class="button rose" type="submit">Rechercher <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
     <a class="reset-filters" href="{{ route('oeuvres.index', ['search' => '']) }}#bibliotheque">Réinitialiser</a>
   </form>
   @if($errors->any())<p class="filter-error" role="alert">Vérifie les filtres : choisis un format et un statut proposés, et un titre de 120 caractères maximum.</p>@endif
@@ -17,7 +17,7 @@
     <nav class="catalogue-pagination" aria-label="Pages du catalogue">
       @if($oeuvres->previousPageUrl())<a class="button cream" href="{{ $oeuvres->previousPageUrl() }}">← Précédent</a>@endif
       <span>Page {{ $oeuvres->currentPage() }} sur {{ $oeuvres->lastPage() }}</span>
-      @if($oeuvres->nextPageUrl())<a class="button cream" href="{{ $oeuvres->nextPageUrl() }}">Suivant →</a>@endif
+      @if($oeuvres->nextPageUrl())<a class="button cream" href="{{ $oeuvres->nextPageUrl() }}">Suivant <i class="fa-solid fa-arrow-right-long"></i></a>@endif
     </nav>
   @endif
 </section>
