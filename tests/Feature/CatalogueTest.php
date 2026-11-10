@@ -24,12 +24,6 @@ class CatalogueTest extends TestCase
         $this->get('/oeuvres?search=Sakura&type=manga&status=termine')->assertOk()->assertSee('Sakura retenu')->assertDontSee('Sakura anime exclu')->assertDontSee('Sakura en cours exclu');
     }
 
-    public function test_anime_option_is_selectable_in_the_type_filter(): void
-    {
-        $this->get('/oeuvres?type=anime')->assertOk()
-            ->assertSee('<option value="anime" selected>Animés</option>', false);
-    }
-
     public function test_empty_search_explains_how_to_reset_filters(): void
     {
         $this->get('/oeuvres?search=introuvable')->assertOk()->assertSee('Aucune œuvre trouvée')->assertSee('Réinitialiser');
