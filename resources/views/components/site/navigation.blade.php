@@ -8,7 +8,7 @@
     <a href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a>
   </div>
   <div class="navigation-actions">
-    <a class="search-link" href="{{ route('oeuvres.index') }}#bibliotheque">Explorer</a>
+    <a class="search-link" href="{{ route('oeuvres.index') }}#bibliotheque"><i class="fa-solid fa-magnifying-glass"></i> Explorer</a>
     <a class="button rose" href="{{ route('contact') }}">Écris-nous <span aria-hidden="true">↗</span></a>
   </div>
   <details class="mobile-menu"><summary>☰ Menu</summary><div class="mobile-links">

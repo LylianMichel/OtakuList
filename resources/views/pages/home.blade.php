@@ -7,7 +7,7 @@
       <span class="overline"><i class="fa-solid fa-fan"></i> CHAPITRE 01 — ENTRE DANS L'HISTOIRE</span>
       <h1 id="hero-title">Chaque page,<br>un nouvel<br><em>univers.</em></h1>
       <p class="lede">Animés à regarder, mangas à feuilleter. Explore les histoires, découvre leurs synopsis et trouve ton prochain univers.</p>
-      <div class="hero-actions"><a class="button rose" href="{{ route('oeuvres.index') }}">Explorer la collection <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="button cream" href="{{ route('about') }}">Notre histoire <i class="fa-solid fa-arrow-right-long"></i></a></div>
+      <div class="hero-actions"><a class="button rose" href="{{ route('oeuvres.index') }}"><i class="fa-solid fa-magnifying-glass"></i> Explorer la collection <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="button cream" href="{{ route('about') }}">Notre histoire <i class="fa-solid fa-arrow-right-long"></i></a></div>
       <div class="tiny-caption">LECTURE · DÉCOUVERTES · ÉMOTIONS <i class="fa-solid fa-fan"></i></div>
     </div>
     <div class="hero-panels" aria-label="Illustrations de style manga japonais">
