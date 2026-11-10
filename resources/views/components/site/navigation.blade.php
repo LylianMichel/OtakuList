@@ -18,10 +18,4 @@
     <a href="{{ route('about') }}">À propos</a>
     <a href="{{ route('contact') }}">Contact</a>
   </div></details>
-    @auth
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button type="submit">Déconnexion ({{ auth()->user()->name }})</button>
-        </form>
-    @endauth
 </nav>
