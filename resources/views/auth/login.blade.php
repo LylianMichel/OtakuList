@@ -116,13 +116,7 @@
                                 <i class="fa fa-sign-in-alt mr-2"></i>{{ __('Sign In') }}
                             </button>
 
-                            @if (config('settings.reCaptchStatus'))
-                                <div class="g-recaptcha mt-3" data-sitekey="{{ config('settings.reCaptchSite') }}"></div>
-                            @endif
-
                             <div class="divider-text">{{ __('or continue with') }}</div>
-
-                            @include('partials.socials-icons')
 
                         </form>
                     </div>
@@ -141,9 +135,6 @@
 @endsection
 
 @section('footer_scripts')
-    @if (config('settings.reCaptchStatus'))
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-    @endif
     <script>
         // Password visibility toggle
         (function () {

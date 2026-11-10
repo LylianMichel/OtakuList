@@ -210,12 +210,6 @@
 
                             <div class="divider-text">{{ __('or register with') }}</div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    @include('partials.socials')
-                                </div>
-                            </div>
-
                         </form>
                     </div>
 
