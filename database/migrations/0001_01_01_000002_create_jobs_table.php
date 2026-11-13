@@ -11,7 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        $this->createJobsTable();
+        $this->createJobBatchesTable();
+        $this->createFailedJobsTable();
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('job_batches');
+        Schema::dropIfExists('failed_jobs');
+    }
+
+    private function createJobsTable(): void
+    {
+        Schema::create('jobs', function (Blueprint $table): void {
             $table->id();
             $table->string('queue')->index();
             $table->longText('payload');
@@ -20,8 +37,11 @@ return new class extends Migration
             $table->unsignedInteger('available_at');
             $table->unsignedInteger('created_at');
         });
+    }
 
-        Schema::create('job_batches', function (Blueprint $table) {
+    private function createJobBatchesTable(): void
+    {
+        Schema::create('job_batches', function (Blueprint $table): void {
             $table->string('id')->primary();
             $table->string('name');
             $table->integer('total_jobs');
@@ -33,8 +53,11 @@ return new class extends Migration
             $table->integer('created_at');
             $table->integer('finished_at')->nullable();
         });
+    }
 
-        Schema::create('failed_jobs', function (Blueprint $table) {
+    private function createFailedJobsTable(): void
+    {
+        Schema::create('failed_jobs', function (Blueprint $table): void {
             $table->id();
             $table->string('uuid')->unique();
             $table->string('connection');
@@ -45,15 +68,5 @@ return new class extends Migration
 
             $table->index(['connection', 'queue', 'failed_at']);
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('jobs');
-        Schema::dropIfExists('job_batches');
-        Schema::dropIfExists('failed_jobs');
     }
 };
