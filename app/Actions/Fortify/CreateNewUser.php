@@ -20,8 +20,8 @@ class   CreateNewUser implements CreatesNewUsers
      *
      * @throws ValidationException
      */
-    // fichier app/Actions/Fortify/CreateNewUser.php
-    public function create(array $input): User {
+    public function create(array $input): User
+    {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
