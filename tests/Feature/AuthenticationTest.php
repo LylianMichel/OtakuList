@@ -22,22 +22,25 @@ class AuthenticationTest extends TestCase
     public function test_registration_creates_a_user_and_redirects_to_login_as_a_guest(): void
     {
         $this->post(route('register'), [
-            'name' => 'Lylian',
+            'nom' => 'dupont',
+            'prenom' => 'lylian',
             'email' => 'lylian@example.test',
             'password' => 'password123',
             'password_confirmation' => 'password123',
-        ])->assertRedirectToRoute('login')->assertSessionHasNoErrors()->assertSessionHas('status');
+        ])->assertRedirectToRoute('login')->assertSessionHasNoErrors()->assertSessionHas('success');
 
         $this->assertGuest();
         $user = User::where('email', 'lylian@example.test')->firstOrFail();
-        $this->assertSame('Lylian', $user->name);
+        $this->assertSame('Lylian Dupont', $user->name);
+        $this->assertSame('dupont', $user->nom);
+        $this->assertSame('lylian', $user->prenom);
         $this->assertTrue(Hash::check('password123', $user->password));
     }
 
     public function test_registration_rejects_missing_fields(): void
     {
         $this->from(route('register'))->post(route('register'), [])
-            ->assertRedirectToRoute('register')->assertSessionHasErrors(['name', 'email', 'password']);
+            ->assertRedirectToRoute('register')->assertSessionHasErrors(['nom', 'prenom', 'email', 'password']);
 
         $this->assertDatabaseCount('users', 0);
     }
@@ -47,7 +50,8 @@ class AuthenticationTest extends TestCase
         $user = User::factory()->create();
 
         $this->post(route('register'), [
-            'name' => 'Lylian',
+            'nom' => 'Dupont',
+            'prenom' => 'Lylian',
             'email' => $user->email,
             'password' => 'short',
             'password_confirmation' => 'different',
