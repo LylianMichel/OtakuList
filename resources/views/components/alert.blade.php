@@ -1,9 +1,5 @@
-@props(['type' => 'info', 'title' => null])
+@props(['type' => 'info', 'title' => null, 'dismissible' => false])
 
-<div {{ $attributes->merge(['class' => 'alert alert-'.$type, 'role' => 'alert']) }}>
-    @if ($title)
-        <strong class="alert-title">{{ $title }}</strong>
-    @endif
-    <div>{{ $slot }}</div>
-</div>
-
+<x-patials.alert :type="$type" :title="$title" :dismissible="$dismissible" {{ $attributes }}>
+    {{ $slot }}
+</x-patials.alert>

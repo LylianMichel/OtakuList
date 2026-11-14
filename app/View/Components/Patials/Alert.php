@@ -2,25 +2,30 @@
 
 namespace App\View\Components\Patials;
 
-use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Alert extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
-    {
-        //
+    public const TYPES = [
+        'success' => 'fa-circle-check',
+        'error' => 'fa-circle-xmark',
+        'warning' => 'fa-triangle-exclamation',
+        'info' => 'fa-circle-info',
+    ];
+
+    public function __construct(
+        public string $type = 'info',
+        public ?string $title = null,
+        public bool $dismissible = false,
+    ) {
+        if (! array_key_exists($this->type, self::TYPES)) {
+            $this->type = 'info';
+        }
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render(): View
     {
-        return view('components.patials.alert');
+        return view('components.patials.alert', ['icon' => self::TYPES[$this->type]]);
     }
 }

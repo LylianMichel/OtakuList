@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Authentification' }} · OtakuList</title>
-    <link rel="stylesheet" href="{{ asset('css/otaku.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 </head>
 <body>
@@ -13,8 +13,9 @@
         <x-site.header />
         <x-site.navigation />
         <main id="main">
+            <x-partials.alerts />
+            <x-partials.flash-messages />
             <section class="section auth-section">
-                <x-partials.alerts />
                 {{ $slot }}
             </section>
         </main>
@@ -22,4 +23,3 @@
     </div>
 </body>
 </html>
-
