@@ -6,10 +6,8 @@
         <form method="POST" action="{{ route('password.update') }}" class="site-form">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
-            <div>
-                <x-label for="email" value="Adresse e-mail" />
-                <x-input id="email" name="email" type="email" :value="old('email', $email)" autocomplete="email" required />
-            </div>
+            <input type="hidden" name="email" value="{{ $email }}">
+            <p>Compte : {{ $email }}</p>
             <div>
                 <x-label for="password" value="Nouveau mot de passe (8 caractères minimum)" />
                 <x-input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required />

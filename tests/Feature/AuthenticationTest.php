@@ -69,7 +69,7 @@ class AuthenticationTest extends TestCase
             'email' => $user->email,
             'password' => 'password',
             'remember' => '1',
-        ])->assertRedirectToRoute('home')->assertSessionHasNoErrors();
+        ])->assertRedirectToRoute('home')->assertSessionHasNoErrors()->assertSessionHas('success');
 
         $this->assertAuthenticatedAs($user);
         $this->assertNotNull($user->fresh()->remember_token);
@@ -91,7 +91,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)->post(route('logout'))->assertRedirect('/');
+        $this->actingAs($user)->post(route('logout'))->assertRedirect('/')->assertSessionHas('success');
 
         $this->assertGuest();
     }
