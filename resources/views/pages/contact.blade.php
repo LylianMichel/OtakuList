@@ -54,10 +54,10 @@
     </div>
     <p>Ces quatre exemples permettent de tester le composant d'alerte.</p>
     <div class="alert-examples">
-        <x-alert type="success" title="Succès">Ton message a bien été validé.</x-alert>
-        <x-alert type="error" title="Erreur">Vérifie les informations saisies dans le formulaire.</x-alert>
-        <x-alert type="warning" title="Avertissement">L'envoi d'e-mails n'est pas encore activé.</x-alert>
-        <x-alert type="info" title="Information">Les champs du formulaire sont tous obligatoires.</x-alert>
+        <x-alert type="success" title="Succès" dismissible>Ton message a bien été validé.</x-alert>
+        <x-alert type="error" title="Erreur" dismissible>Vérifie les informations saisies dans le formulaire.</x-alert>
+        <x-alert type="warning" title="Avertissement" dismissible>Vérifie ton adresse e-mail avant de valider.</x-alert>
+        <x-alert type="info" title="Information" dismissible>Les champs du formulaire sont tous obligatoires.</x-alert>
     </div>
 </section>
 @endsection
