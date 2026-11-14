@@ -3,59 +3,35 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
-    /**
-     * Validate and update the given user's profile information.
-     *
-     * @param  array<string, string>  $input
-     *
-     * @throws ValidationException
-     */
+    use ProfileValidationRules;
+
     public function update(User $user, array $input): void
     {
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-            ],
-        ])->validateWithBag('updateProfileInformation');
-
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
-            $this->updateVerifiedUser($user, $input);
-        } else {
-            $user->forceFill([
-                'name' => $input['name'],
-                'email' => $input['email'],
-            ])->save();
+        if (config('fortify.lowercase_usernames') && is_string($input['email'] ?? null)) {
+            $input['email'] = Str::lower($input['email']);
         }
-    }
 
-    /**
-     * Update the given verified user's profile information.
-     *
-     * @param  array<string, string>  $input
-     */
-    protected function updateVerifiedUser(User $user, array $input): void
-    {
-        $user->forceFill([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'email_verified_at' => null,
+        $validated = Validator::make(
+            $input,
+            $this->profileRules($user),
+            $this->profileMessages(),
+        )->validateWithBag('updateProfileInformation');
+
+        if ($validated['email'] !== $user->email) {
+            $user->email_verified_at = null;
+        }
+
+        $user->fill([
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'name' => Str::title(Str::lower($validated['prenom'].' '.$validated['nom'])),
+            'email' => $validated['email'],
         ])->save();
-
-        $user->sendEmailVerificationNotification();
     }
 }
