@@ -27,7 +27,7 @@ class PasswordTest extends TestCase
         Notification::fake();
 
         $this->from(route('password.request'))->post(route('password.email'), ['email' => $user->email])
-            ->assertRedirectToRoute('password.request')->assertSessionHasNoErrors()->assertSessionHas('status');
+            ->assertRedirectToRoute('login')->assertSessionHasNoErrors()->assertSessionHas('success');
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
