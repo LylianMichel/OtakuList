@@ -1,4 +1,5 @@
 <x-layout.app>
+    @section('title', 'Changer de mot de passe')
     <section class="section auth-section">
         <div class="contact-sheet auth-sheet">
             <span class="contact-label">MON COMPTE</span>

@@ -203,6 +203,8 @@ return [
         'password' => 'mot de passe',
         'password_confirmation' => 'confirmation du mot de passe',
         'current_password' => 'mot de passe actuel',
+        'subject' => 'sujet',
+        'message' => 'message',
         'search' => 'recherche',
         'titre' => 'titre',
         'type' => 'format',

@@ -1,7 +1,7 @@
-@foreach (array_keys(\App\View\Components\Patials\Alert::TYPES) as $type)
+@foreach (array_keys(\App\View\Components\Partials\Alert::TYPES) as $type)
     @if (session($type))
         <div class="site-messages">
-            <x-alert :type="$type" dismissible>{{ session($type) }}</x-alert>
+            <x-partials.alert :type="$type" dismissible>{{ session($type) }}</x-partials.alert>
         </div>
     @endif
 @endforeach

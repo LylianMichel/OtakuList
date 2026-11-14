@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Patials;
+namespace App\View\Components\Partials;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -26,6 +26,6 @@ class Alert extends Component
 
     public function render(): View
     {
-        return view('components.patials.alert', ['icon' => self::TYPES[$this->type]]);
+        return view('components.partials.alert', ['icon' => self::TYPES[$this->type]]);
     }
 }

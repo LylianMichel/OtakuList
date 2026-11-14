@@ -14,7 +14,7 @@ class AlertTest extends TestCase
     #[TestWith(['info'])]
     public function test_alert_displays_its_type_title_and_escaped_message(string $type): void
     {
-        $html = Blade::render('<x-alert :type="$type" title="Un message" id="example">{{ $message }}</x-alert>', [
+        $html = Blade::render('<x-partials.alert :type="$type" title="Un message" id="example">{{ $message }}</x-partials.alert>', [
             'type' => $type,
             'message' => '<script>alert("test")</script>',
         ]);
@@ -28,7 +28,7 @@ class AlertTest extends TestCase
 
     public function test_alert_can_be_dismissed(): void
     {
-        $html = Blade::render('<x-alert type="success" dismissible>Message</x-alert>');
+        $html = Blade::render('<x-partials.alert type="success" dismissible>Message</x-partials.alert>');
 
         $this->assertStringContainsString('x-show="show"', $html);
         $this->assertStringContainsString('show = false', $html);
